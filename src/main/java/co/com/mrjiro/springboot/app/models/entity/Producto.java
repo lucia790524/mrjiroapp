@@ -5,7 +5,9 @@
 package co.com.mrjiro.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,19 +29,26 @@ public class Producto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String clase;
+	
 	private String nombre;
+	
 	private int precio;
+	
+	@Column(name = "fecha_vencimiento")
+	private Date fechaVencimiento;
 
 	public Producto() {
 
 	}
 
-	public Producto(String clase, String nombre, int precio) {
+	public Producto(String clase, String nombre, int precio, Date fechaVencimiento) {
 
 		this.clase = clase;
 		this.nombre = nombre;
 		this.precio = precio;
+		this.fechaVencimiento = fechaVencimiento;
 	}
 
 	public Long getId() {
@@ -78,4 +87,11 @@ public class Producto implements Serializable {
 		return serialVersionUID;
 	}
 
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
 }

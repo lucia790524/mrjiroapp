@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -39,16 +41,22 @@ public class Cliente implements Serializable {
 	@Column(name = "tipo_documento")
 	private String tipoDocumento;
 
+	@NotEmpty
 	private String documento;
 
+	@NotEmpty
 	private String nombre;
 
+	@NotEmpty
 	private String apellido;
 
+	@NotEmpty
 	private String direccion;
 
+	@NotEmpty
 	private String telefono;
 
+	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
