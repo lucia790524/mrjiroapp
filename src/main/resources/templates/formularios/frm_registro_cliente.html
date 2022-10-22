@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/navbar::head"></head>
+<body class="container">
+	<header th:replace="layout/navbar::header"></header>
+	<main>
+		<section>
+			<article
+				class="d-flex flex-column justify-content-center align-items-center text-center">
+				<form th:action="@{/registro/cliente}" th:object="${cliente}" method="post">
+					<ul class="dropdown">
+						<figure>
+							<img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+						</figure>
+						<h3 class="text-white">Registro Cliente</h3>
+						<li><select th:field="*{tipoDocumento}"
+							name="Tipo de documento" class="form-select mb-3 form-select-sm">
+								<option th:value="'CC'" th:text="'Cedula'"></option>
+								<option th:value="'NIT'" th:text="'Nit'"></option>
+								<option th:value="'CE'" th:text="'Cedula Extranjería'"></option>
+						</select></li>
+						<li class="mb-3"><label for="Numero de documento"> <input
+								type="text" id="identificacion"
+								placeholder="Numero de documento" required
+								th:field="*{documento}" />
+						</label></li>
+						<li class="mb-3"><label for="nombre"> <input
+								type="text" name="nombre" placeholder="Nombre" required
+								th:field="*{nombre}" />
+						</label></li>
+						<li class="mb-3"><label for="apellido"> <input
+								type="family_ name" name="apellido" placeholder="Apellido"
+								required th:field="*{apellido}" />
+						</label></li>
+						<li class="mb-3"><label for="direccion"> <input
+								type="street-address" name="direccion" placeholder="Direccion"
+								required th:field="*{direccion}" />
+						</label></li>
+						<li class="mb-3"><label for="telefono"> <input
+								type="tel" name="telefono" placeholder="Telefono" required
+								th:field="*{telefono}" />
+						</label></li>
+						<li><label for="Crear"> <input type="submit" required
+								class="btn btn-primary" />
+						</label></li>
+					</ul>
+					<input type="hidden" th:field="*{id}" />
+				</form>
+			</article>
+		</section>
+	</main>
+</body>
+<footer th:replace="layout/navbar::footer"></footer>
+
+</html>

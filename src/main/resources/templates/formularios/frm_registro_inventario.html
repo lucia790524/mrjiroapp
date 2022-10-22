@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    rel="StyleSheet"
+    href="../CSS/styles.css"
+    type="text/css"
+    media="screen"
+  />
+  <link
+      rel="stylesheet"
+      href="../CSS/bootstrap.css"
+      type="text/css"
+      media="screen"
+    />
+    <title>Inventario</title>
+  </head>
+  <body class="container">
+    <header>
+      <nav class="navbar fixed-top">
+        <figure class="dropdown">
+          <img class="logo-ppal" src="../img/logo_MrJiro.jpeg" alt="logo" />
+        </figure>
+        <ul class="dropdown">
+          <a class="text-white" href="../Index.html">Inicio</a>
+        </ul>
+        <ul class="dropdown">
+          <button class="dropbtn">
+            Clientes
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <li class="dropdown-content">
+            <a href="frm_registro_cliente.html">Registrar Cliente</a>
+            <a href="frm_buscar_cliente.html">Buscar Cliente</a>
+            <a href="frm_modificar_cliente.html">Modificar Cliente</a>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <button class="dropbtn">
+            Productos
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <li class="dropdown-content">
+            <a href="frm_registro_producto.html">Registrar Producto</a>
+            <a href="frm_buscar_producto.html">Buscar Producto</a>
+            <a href="frm_modificar_producto.html">Modificar Producto</a>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <button class="dropbtn">
+            Pedidos
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <li class="dropdown-content">
+            <a href="frm_registro_pedido.html">Registrar Pedido</a>
+            <a href="frm_buscar_pedido.html">Buscar Pedido</a>
+            <a href="frm_modificar_pedido.html">Modificar Pedido</a>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <button class="dropbtn">
+            Proveedores
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <li class="dropdown-content">
+            <a href="frm_registro_provedores.html">Registrar Proveedor</a>
+            <a href="frm_buscar_proveedor.html">Buscar Proveedor</a>
+            <a href="frm_modificar_proveedor.html">Modificar Proveedor</a>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <button class="dropbtn">
+            Configuracion
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <li class="dropdown-content">
+            <a href="frm_registro_usuario.html">Registrar usuario</a>
+            <a href="#">Cerrar sesion</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <article class="d-flex flex-column justify-content-center align-items-center text-center">
+          <form action="">
+            <ul class="dropdown">
+              <figure>
+                <img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+              </figure>
+              <h3 class="text-white">Inventario</h3>
+              <li class="mb-3">
+                <label for="Numero producto">
+                  <input type="text"
+                   id="ingresar producto" 
+                   placeholder=" Numero producto" 
+                   required />
+                </label>
+              </li>
+              <li class="mb-3">
+                <label for="Cantidad">
+                  <input type="text"
+                   id="Cantidad" 
+                   placeholder="Cantidad" 
+                   required />
+                </label>
+              </li>
+              <li class="mb-3">
+                  <label for="Proveedor">
+                      <input type="text"
+                       id="Proveedor" 
+                       placeholder="Proveedor" 
+                       required />
+                    </label>
+                  </li>
+                  <li class="mb-3">
+                    <label for="Fecha_Hora_ingreso">
+                        <input type="datetime-local"
+                         id="Fecha_Hora_ingreso" 
+                         placeholder="Fecha_Hora_ingreso" 
+                         required />
+                      </label>
+                    </li>
+                    <li class="mb-3">
+                      <label for="Fecha_Hora_vencimiento">
+                          <input type="datetime-local"
+                           id="Fecha_Hora_vencimiento" 
+                           placeholder="Fecha_Hora_vencimiento" 
+                           required />
+                        </label>
+                      </li>
+                      <li class="mb-3 ">
+                        <label for="Crear">
+                          <input
+                          class="btn btn-primary"
+                            type="submit"
+                            value="Crear"
+                            required
+                          />
+                    </label>
+                    <label for="Eliminar">
+                      <input
+                      class="btn btn-primary"
+                        type="submit"
+                        value="Cancelar"
+                        required
+                      />
+                    </label>
+                    </label>
+                  </li>
+                </label>
+            </ul>
+          </form>
+        </article>
+      </section>
+    </main> 
+  </body>
+  <footer>Gracias por la visita</footer>
+</html>

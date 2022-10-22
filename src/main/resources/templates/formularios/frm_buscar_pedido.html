@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="StyleSheet" href="../CSS/styles.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../CSS/bootstrap.css" type="text/css" media="screen" />
+  <title>Pedido</title>
+</head>
+
+<body class="container">
+  <header>
+    <nav class="navbar fixed-top">
+      <figure class="dropdown">
+        <img class="logo-ppal" src="../img/logo_MrJiro.jpeg" alt="logo" />
+      </figure>
+      <ul class="dropdown">
+        <a class="text-white" href="../Index.html">Inicio</a>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Clientes
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_cliente.html">Registrar Cliente</a>
+          <a href="frm_buscar_cliente.html">Buscar Cliente</a>
+          <a href="frm_modificar_cliente.html">Modificar Cliente</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Productos
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_producto.html">Registrar Producto</a>
+          <a href="frm_buscar_producto.html">Buscar Producto</a>
+          <a href="frm_modificar_producto.html">Modificar Producto</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Pedidos
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_pedido.html">Registrar Pedido</a>
+          <a href="frm_buscar_pedido.html">Buscar Pedido</a>
+          <a href="frm_modificar_pedido.html">Modificar Pedido</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Proveedores
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_provedores.html">Registrar Proveedor</a>
+          <a href="frm_buscar_proveedor.html">Buscar Proveedor</a>
+          <a href="frm_modificar_proveedor.html">Modificar Proveedor</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Configuracion
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_usuario.html">Registrar usuario</a>
+          <a href="#">Cerrar sesion</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <article class="d-flex flex-column justify-content-center align-items-center text-center">
+        <form action="" class="">
+          <ul class="dropdown">
+            <figure>
+              <img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+            </figure>
+            <h3 class="text-white">Buscar pedido</h3>
+            <li>
+              <label for="identificacion">
+                <input class="mb-3" type="text" name="identificacion" placeholder="Numero Pedido" required />
+              </label>
+            </li>
+            <li>
+              <label for="Buscar">
+                <input type="submit" value="Buscar" class="btn btn-primary" required />
+              </label>
+              <label for="cancelar">
+                <input type="submit" value="cancelar" class="btn btn-primary" required />
+              </label>
+            </li>
+          </ul>
+        </form>
+      </article>
+      <table class="table text-white container-secundary">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Identificacion</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Precio total</th>
+            <th scope="col">Factura</th>
+            <th scope="col">Modificar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="col">001</th>
+            <th scope="col">C.C.</th>
+            <th scope="col">123456</th>
+            <th scope="col">Juan</th>
+            <th scope="col">Perez</th>
+            <th scope="col">$120.000</th>
+            <th scope="col">
+              <label for="Facturar">
+                <input type="submit" value="Facturar" required class="btn btn-primary" />
+              </label>
+            </th>
+            <th scope="col">
+              <label for="Modificar">
+                <input type="submit" value="Modificar" required class="btn btn-primary" />
+              </label>
+            </th>
+            <th scope="col">
+              <label for="Eliminar">
+                <input type="submit" value="Eliminar" required class="btn btn-primary" />
+              </label>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+<footer>Gracias por la visita</footer>
+</html>
