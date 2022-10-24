@@ -23,10 +23,10 @@ public class ProveedorController {
 	@Autowired
 	private IProveedorDao proveedorDao;
 
-	@RequestMapping(value = "/proveedor", method = RequestMethod.GET)
+	@RequestMapping(value = "/proveedores", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de Clientes");
-		model.addAttribute("proveedor", proveedorDao.findAll());
+		model.addAttribute("proveedores", proveedorDao.findAll());
 		return "formularios/frm_buscar_proveedor";
 	}
 
@@ -46,14 +46,14 @@ public class ProveedorController {
 		if (id > 0) {
 			proveedor = proveedorDao.findOne(id);
 		} else {
-			return "redirect:/proveedoress";
+			return "redirect:/proveedores";
 		}
 		model.put("proveedor", proveedor);
 		model.put("titulo", "Editar Proveedor");
 		return "formularios/frm_registro_proveedor";
 	}
 
-	@RequestMapping(value = "/registro/`proveedor", method = RequestMethod.POST)
+	@RequestMapping(value = "/registro/proveedor", method = RequestMethod.POST)
 	public String guardar(@Valid Proveedor proveedor, BindingResult result, Model model, SessionStatus status) {
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Registro Proveedor");

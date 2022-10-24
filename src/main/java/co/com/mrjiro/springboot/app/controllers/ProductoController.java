@@ -17,7 +17,7 @@ import co.com.mrjiro.springboot.app.models.dao.IProductoDao;
 import co.com.mrjiro.springboot.app.models.entity.Producto;
 
 @Controller
-@SessionAttributes ("propducto")
+@SessionAttributes ("producto")
 public class ProductoController {
 	
 	@Autowired

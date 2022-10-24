@@ -146,3 +146,21 @@ main {
   padding: 0;
   width: 80%;
 }
+
+.contenedor-principal {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.contenedor-primario { grid-area: 1 / 1 / 6 / 4; overflow:scroll; height:60%;overflow-x:hidden; }
+.contenedor-secundario { grid-area: 1 / 4 / 6 / 6; }
+
+.parent {
+display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 350px 350px;
+}

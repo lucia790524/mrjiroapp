@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -37,7 +38,7 @@ public class Producto implements Serializable {
 	@NotEmpty
 	private String nombre;
 	
-	@NotEmpty
+	@NotNull
 	private int precio;
 	
 	@Column(name = "fecha_vencimiento")
