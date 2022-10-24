@@ -42,13 +42,8 @@
 						<td th:text="${producto.clase}"></td>
 						<td th:text="${producto.nombre}"></td>
 						<td th:text="${producto.precio}"></td>
-						</th>
-						<th scope="col"><label for="Modificar"> <input
-								type="submit" value="Modificar" required class="btn btn-primary" />
-						</label></th>
-						<th scope="col"><label for="Eliminar"> <input
-								type="submit" value="Eliminar" required class="btn btn-primary" />
-						</label></th>
+						<td><a class="btn btn-primary btn-xs" th:href="@{/registro/producto/} + ${producto.id}" th:text="'editar'"></a></td>
+						<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/producto/} + ${producto.id}" th:text="'eliminar'"></a></td>
 					</tr>
 				</tbody>
 			</table>

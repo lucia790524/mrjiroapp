@@ -3,14 +3,13 @@
 <head th:replace="layout/navbar::head"></head>
 <body class="container">
 	<header th:replace="layout/navbar::header"></header>
-	<main>
 		<section>
 			<article
 				class="d-flex flex-column justify-content-center align-items-center text-center text-white">
 				<form action="">
 					<ul class="dropdown">
 						<figure>
-							<img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+							<img class="logo" th:src="@{/img/MrJiro.jpeg}" alt="logo" />
 						</figure>
 						<h3>Buscar Cliente</h3>
 						<li><select name="Tipo de documento"
@@ -58,12 +57,8 @@
 						<td th:text=" ${cliente.direccion}"></td>
 						<td th:text=" ${cliente.telefono}"></td>
 						<td th:text=" ${cliente.createAt}"></td>
-						<th scope="col"><label for="Modificar"> <input
-								type="submit" value="Modificar" required class="btn btn-primary" />
-						</label></th>
-						<th scope="col"><label for="Eliminar"> <input
-								type="submit" value="Eliminar" required class="btn btn-primary" />
-						</label></th>
+						<td><a class="btn btn-primary btn-xs" th:href="@{/registro/cliente/} + ${cliente.id}" th:text="'editar'"></a></td>
+						<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/cliente/} + ${cliente.id}" th:text="'eliminar'"></a></td>
 					</tr>
 				</tbody>
 			</table>

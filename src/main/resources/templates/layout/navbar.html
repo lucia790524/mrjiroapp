@@ -5,9 +5,9 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="StyleSheet" href="../CSS/styles.css" type="text/css"
+<link rel="StyleSheet" th:href="@{/CSS/styles.css}" type="text/css"
 	media="screen" />
-<link rel="stylesheet" href="../CSS/bootstrap.css" type="text/css"
+<link rel="stylesheet" th:href="@{/CSS/bootstrap.css}" type="text/css"
 	media="screen" />
 <title>Mr Jiro</title>
 </head>
@@ -16,7 +16,7 @@
 	<header  th:fragment="header">
 		<nav class="navbar fixed-top">
 			<figure class="dropdown">
-				<img class="logo-ppal" src="../img/logo_MrJiro.jpeg" alt="logo" />
+				<img class="logo-ppal" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo" />
 			</figure>
 			<ul class="dropdown">
 				<a class="text-white" href="../Index.html">Inicio</a>
@@ -33,9 +33,10 @@
 				<button class="dropbtn">
 					Productos <i class="fa fa-caret-down"></i>
 				</button>
-				<li class="dropdown-content"><a
-					th:href="@{/registro/producto}">Registrar Producto</a> <a
-					th:href="@{/productos}">Buscar Producto</a></li>
+				<li class="dropdown-content">
+					<a th:href="@{/registro/producto}">Registrar Producto</a>
+					<a th:href="@{/productos}">Buscar Producto</a>
+				</li>
 			</ul>
 			<ul class="dropdown">
 				<button class="dropbtn">
@@ -49,10 +50,9 @@
 				<button class="dropbtn">
 					Proveedores <i class="fa fa-caret-down"></i>
 				</button>
-				<li class="dropdown-content"><a
-					href="frm_registro_provedores.html">Registrar Proveedor</a> <a
-					href="frm_buscar_proveedor.html">Buscar Proveedor</a> <a
-					href="frm_modificar_proveedor.html">Modificar Proveedor</a></li>
+				<li class="dropdown-content">
+					<a th:href="@{/registro/proveedor}">Registrar Proveedor</a>
+					<a th:href="@{/proveedores}">Buscar Proveedor</a>
 			</ul>
 			<ul class="dropdown">
 				<button class="dropbtn">
@@ -67,5 +67,9 @@
 	<main>
 	</main>
 </body>
-<footer th:fragment>Gracias por la visita</footer>
+<footer th:fragment>
+<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery-3.6.1.min.js}"></script>
+<p>Gracias por la visita</p>
+</footer>
 </html>

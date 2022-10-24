@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="StyleSheet"href="../CSS/styles.css"type="text/css"media="screen" />
-      <link rel="stylesheet" href="../CSS/bootstrap.css" type="text/css" media="screen">
-    <title>Proveedores</title>
-     </head>
-      <body class=" container" >
-        <header>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/navbar::head"></head>
+<body class="container">
+	<header th:replace="layout/navbar::header"></header>
+	<main>
           <nav class="navbar fixed-top">
             <figure class="dropdown">
               <img class="logo-ppal" src="../img/logo_MrJiro.jpeg" alt="logo" />
@@ -76,60 +70,69 @@
         <main>
           <section>
             <article class="d-flex flex-column justify-content-center align-items-center text-center">
-              <form action=""> 
-                <ul class="dropdown" > 
-                  <figure>
-                    <img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
-                  </figure>
-                  <h3 class="text-white">Registrar proveedor</h3>
-                  <li>
-                    <select name="Tipo de documento" class="form-select mb-3 form-select-sm">
-                      <option selected>Tipo de documento</option>
-                      <option value="CC">Cedula</option>
-                      <option value="NIT">NIT</option>
-                      <option value="CE">Cedula Extranjeria</option>
-                    </select>
-                  </li>
-                  <li>     
-                   <label for="Nombre_Proveedor">      
-                      <input type="text"  class="mb-3"
-                      id="Nombre_Proveedor"
-                      placeholder="Nombre_Proveedor">
-                  </label> 
-                </li>
-                <li>
-                  <label for="Numero producto">
-                    <input type="text" class="mb-3"
-                     id="ingresar producto" 
-                     placeholder=" Numero producto" 
-                     required />
-                  </label>
-                </li>
-                <li >
-                  <label for="Direccion">
-                  <input type="text" class="mb-3"
-                  id="Direccion"
-                   placeholder="Direccion">
-                  </label> 
-                </li> 
-                <li> 
-                  <label for="Telefono">
-                      <input type="text" class="mb-3"
-                      id="Telefono" 
-                      placeholder="Telefono">
-                  </label> 
-               </li>
-               <li>
-                  <label for="Buscar">
-                      <input class="mb-3 btn btn-primary"
-                      type="submit" 
-                      value="Buscar" />
-                </li>  
-              </ul>
+              <form action="@{/registro/proveedor}" th:object="${proveedor}"
+              method="post"> 
+              
+              <ul class="dropdown">
+						<figure>
+							<img class="logo" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo" />
+						</figure>
+						<h3 class="text-white" th:text="${titulo}"></h3>
+						<li><select th:field="*{tipoDocumento}"
+							name="Tipo de documento"
+							class="form-select mb-3 form-select-sm form-control">
+								<option th:value="'CC'" th:text="'Cedula'"></option>
+								<option th:value="'NIT'" th:text="'NIT'"></option>
+								<option th:value="'CE'" th:text="'Cedula Extranjería'"></option>
+						</select></li>
+						<li class="mb-3 form-group"><label for="Numero de documento">
+								<input class="form-control" type="text" id="identificacion"
+								placeholder="Numero de documento" th:field="*{documento}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('documento')}"
+								th:erros="*{documento}"></small>
+
+
+						</label></li>
+						<li class="mb-3"><label for="nombre"> <input
+								class="form-control" type="text" name="nombre"
+								placeholder="Nombre" th:field="*{nombre}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:erros="*{nombre}"></small>
+
+						</label></li>
+						<li class="mb-3"><label for="apellido"> <input
+								class="form-control" type="text" name="apellido"
+								placeholder="Apellido" th:field="*{apellido}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('apellido')}" th:erros="*{apellido}"></small>
+						</label></li>
+						<li class="mb-3"><label for="direccion"> <input
+								class="form-control" type="text" name="direccion"
+								placeholder="Direccion" th:field="*{direccion}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('direccion')}"
+								th:erros="*{direccion}"></small>
+						</label></li>
+						<li class="mb-3"><label for="telefono"> <input
+								class="form-control" type="tel" name="telefono"
+								placeholder="Telefono" th:field="*{telefono}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('telefono')}" th:erros="*{telefono}"></small>
+						</label></li>
+						<li><label for="Crear"> <input type="submit" required
+								class="btn btn-primary" />
+						</label></li>
+					</ul>          
             </form>
             </article>
           </section>
-        </main> 
+        </main>
+        <footer th:replace="layout/navbar::footer"></footer>
     </body>
-    <footer>Gracias por la visita</footer>
 </html>

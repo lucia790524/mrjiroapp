@@ -7,48 +7,68 @@
 		<section>
 			<article
 				class="d-flex flex-column justify-content-center align-items-center text-center">
-				<form th:action="@{/registro/cliente}" th:object="${cliente}" method="post">
+				<form th:action="@{/registro/cliente}" th:object="${cliente}"
+					method="post">
 					<ul class="dropdown">
 						<figure>
-							<img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+							<img class="logo" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo" />
 						</figure>
-						<h3 class="text-white">Registro Cliente</h3>
+						<h3 class="text-white" th:text="${titulo}"></h3>
 						<li><select th:field="*{tipoDocumento}"
-							name="Tipo de documento" class="form-select mb-3 form-select-sm">
+							name="Tipo de documento"
+							class="form-select mb-3 form-select-sm form-control">
 								<option th:value="'CC'" th:text="'Cedula'"></option>
 								<option th:value="'NIT'" th:text="'Nit'"></option>
 								<option th:value="'CE'" th:text="'Cedula Extranjería'"></option>
 						</select></li>
-						<li class="mb-3"><label for="Numero de documento"> <input
-								type="text" id="identificacion"
-								placeholder="Numero de documento" required
-								th:field="*{documento}" />
+						<li class="mb-3 form-group"><label for="Numero de documento">
+								<input class="form-control" type="text" id="identificacion"
+								placeholder="Numero de documento" th:field="*{documento}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('documento')}"
+								th:erros="*{documento}"></small>
+
+
 						</label></li>
 						<li class="mb-3"><label for="nombre"> <input
-								type="text" name="nombre" placeholder="Nombre" required
-								th:field="*{nombre}" />
+								class="form-control" type="text" name="nombre"
+								placeholder="Nombre" th:field="*{nombre}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:erros="*{nombre}"></small>
+
 						</label></li>
 						<li class="mb-3"><label for="apellido"> <input
-								type="family_ name" name="apellido" placeholder="Apellido"
-								required th:field="*{apellido}" />
+								class="form-control" type="text" name="apellido"
+								placeholder="Apellido" th:field="*{apellido}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('apellido')}" th:erros="*{apellido}"></small>
 						</label></li>
 						<li class="mb-3"><label for="direccion"> <input
-								type="street-address" name="direccion" placeholder="Direccion"
-								required th:field="*{direccion}" />
+								class="form-control" type="text" name="direccion"
+								placeholder="Direccion" th:field="*{direccion}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('direccion')}"
+								th:erros="*{direccion}"></small>
 						</label></li>
 						<li class="mb-3"><label for="telefono"> <input
-								type="tel" name="telefono" placeholder="Telefono" required
-								th:field="*{telefono}" />
+								class="form-control" type="tel" name="telefono"
+								placeholder="Telefono" th:field="*{telefono}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('telefono')}" th:erros="*{telefono}"></small>
 						</label></li>
 						<li><label for="Crear"> <input type="submit" required
 								class="btn btn-primary" />
 						</label></li>
 					</ul>
-					<input type="hidden" th:field="*{id}" />
 				</form>
 			</article>
 		</section>
 	</main>
+	<footer th:replace="layout/navbar::footer"></footer>
 </body>
-<footer th:replace="layout/navbar::footer"></footer>
 </html>

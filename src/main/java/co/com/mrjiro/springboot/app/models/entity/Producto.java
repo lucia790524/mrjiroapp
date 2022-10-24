@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 /**
  *
@@ -30,10 +31,13 @@ public class Producto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty
 	private String clase;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotEmpty
 	private int precio;
 	
 	@Column(name = "fecha_vencimiento")
