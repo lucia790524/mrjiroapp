@@ -2,24 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.com.mrjiro.springboot.app.models.entity;
+package co.com.mrjiro.springboot.app.persistence.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 /**
- *
  * @author Martha Lopez
  */
 
@@ -34,8 +26,9 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private Long idCliente;
 
 	@Column(name = "tipo_documento")
 	private String tipoDocumento;
@@ -44,32 +37,34 @@ public class Cliente implements Serializable {
 	private String documento;
 
 	@NotEmpty
-	private String nombre;
+	private String nombres;
 
 	@NotEmpty
-	private String apellido;
+	private String apellidos;
+
+	@NotEmpty
+	private String telefono;
 
 	@NotEmpty
 	private String direccion;
 
-	@NotEmpty
-	private String telefono;
-	
 	@Column(name = "create_At")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos;
+
 	public Cliente() {
-		
 	}
 
-	public Cliente(String tipoDocumento, String documento, String nombre, String apellido, String direccion,
+	public Cliente(String tipoDocumento, String documento, String nombres, String apellidos, String direccion,
 			String telefono, Date createAt) {
 		
 		this.tipoDocumento = tipoDocumento;
 		this.documento = documento;
-		this.nombre = nombre;
-		this.apellido = apellido;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.createAt = createAt;
@@ -80,12 +75,12 @@ public class Cliente implements Serializable {
 		createAt = new Date();
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getTipoDocumento() {
@@ -104,28 +99,20 @@ public class Cliente implements Serializable {
 		this.documento = documento;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombres() {
+		return nombres;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	public String getTelefono() {
@@ -136,6 +123,14 @@ public class Cliente implements Serializable {
 		this.telefono = telefono;
 	}
 
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 	public Date getCreateAt() {
 		return createAt;
 	}
@@ -144,9 +139,11 @@ public class Cliente implements Serializable {
 		this.createAt = createAt;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 }

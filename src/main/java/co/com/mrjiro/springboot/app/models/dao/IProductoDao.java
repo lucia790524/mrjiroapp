@@ -2,7 +2,7 @@ package co.com.mrjiro.springboot.app.models.dao;
 
 import java.util.List;
 
-import co.com.mrjiro.springboot.app.models.entity.Producto;
+import co.com.mrjiro.springboot.app.persistence.entity.Producto;
 
 public interface IProductoDao {
 	

@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.models.entity;
+package co.com.mrjiro.springboot.app.persistence.entity;
 
 import java.io.Serializable;
 import java.util.Date;
