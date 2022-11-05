@@ -4,68 +4,108 @@
  */
 package co.com.mrjiro.springboot.app.models.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author lopez
  */
-public class Pedido {
-    int orden; 
-    int factura;
-    int cantidad;
-    Date fecha;
-    String cliente;
-    
-    public Pedido (){
+@Entity
+@Table(name="pedido")
+public class Pedido implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID =1L;
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name ="createAt")
+	@Temporal(TemporalType.DATE)
+	private Date createAt;
+	
+	@NotNull
+	private int precio;
+	
+	@NotEmpty
+	private String estado;
+	
+	@NotNull
+	private int id_cliente;
+	
+	@NotNull
+	private int id_factura;
+	
+	
+	
+    public Pedido(){
         
     }
 
-    public Pedido(int orden, int factura, int cantidad, Date fecha, String cliente) {
-        this.orden = orden;
-        this.factura = factura;
-        this.cantidad = cantidad;
-        this.fecha = fecha;
-        this.cliente = cliente;
+    public Pedido(Date createAt, int precio,String estado,int id_cliente,int id_factura) {
+    	
+        this.createAt = createAt;
+        this.precio = precio;
+        this.estado = estado;
+        this.id_cliente= id_cliente;
+        this.id_factura = id_factura;
     }
 
-    public int getOrden() {
-        return orden;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrden(int orden) {
-        this.orden = orden;
+    public void setId(Long id) {
+        this.id = id;
+    }
+     
+    @PrePersist
+    public void prePersist() {
+    	createAt = new Date();
     }
 
-    public int getFactura() {
-        return factura;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setFactura(int factura) {
-        this.factura = factura;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
-
-    public String getCliente() {
-        return cliente;
+    public int getId_factura() {
+    	return id_factura;
     }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setId_factura(int id_factura) {
+    	this.id_factura =id_factura;
     }
 }

@@ -4,71 +4,87 @@
  */
 package co.com.mrjiro.springboot.app.models.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 /**
  *
  * @author lopez
  */
-public class Factura {
-    int id_factura;
-    int pedido_orden;
-    int id_orden;
-    int id_producto;
-    Date fecha;
-    
+@Entity
+@Table(name="factura")
+public class Factura implements Serializable {
+    /**
+     * 
+     */
+	private static final long serialVersionUID =1L;
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotEmpty
+	private String tipo_pago;
+	
+	@NotEmpty
+	private String estado;
+	
+	@Column(name = "createAt")
+	@Temporal(TemporalType.DATE)
+	private Date createAt;
+	
     public Factura (){
         
     }
 
-    public Factura(int id_factura, int pedido_orden, int id_orden, int id_producto, Date fecha) {
-        this.id_factura = id_factura;
-        this.pedido_orden = pedido_orden;
-        this.id_orden = id_orden;
-        this.id_producto = id_producto;
-        this.fecha = fecha;
+    public Factura(String tipo_pago, String estado,Date createAt) {
+    	
+        this.tipo_pago = tipo_pago;
+        this.estado = estado;
+        this.createAt= createAt;
+        
     }
     
 
-    public int getId_factura() {
-        return id_factura;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_factura(int id_factura) {
-        this.id_factura = id_factura;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getPedido_orden() {
-        return pedido_orden;
+    public String getTipo_pago() {
+        return tipo_pago;
     }
 
-    public void setPedido_orden(int pedido_orden) {
-        this.pedido_orden = pedido_orden;
+    public void setTipo_pago(String tipo_pago) {
+        this.tipo_pago = tipo_pago;
     }
 
-    public int getId_orden() {
-        return id_orden;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setId_orden(int id_orden) {
-        this.id_orden = id_orden;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public int getId_producto() {
-        return id_producto;
-    }
+    @PrePersist
+	public void prePersist() {
+	 createAt = new Date();
+	}
 
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+}
  
     
-}
+

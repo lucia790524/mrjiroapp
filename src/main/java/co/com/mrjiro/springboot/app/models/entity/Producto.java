@@ -12,7 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -27,22 +30,32 @@ public class Producto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty
-	private String clase;
-	
+	private String descripcion;
+
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotNull
 	private int precio;
-	
-	@Column(name = "fecha_vencimiento")
-	private Date fechaVencimiento;
+
+	@Column(name = "createAt")
+	@Temporal(TemporalType.DATE)
+	private Date createAt;
+
+	@NotNull
+	private int id_proveedores;
+
+	@NotNull
+	private int id_tipo_producto;
+
+	@NotNull
+	private int inventario;
 
 	public Producto() {
 
@@ -50,10 +63,13 @@ public class Producto implements Serializable {
 
 	public Producto(String clase, String nombre, int precio, Date fechaVencimiento) {
 
-		this.clase = clase;
+		this.descripcion = descripcion;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.fechaVencimiento = fechaVencimiento;
+		this.createAt = createAt;
+		this.id_proveedores = id_proveedores;
+		this.id_tipo_producto = id_tipo_producto;
+		this.inventario = inventario;
 	}
 
 	public Long getId() {
@@ -64,12 +80,12 @@ public class Producto implements Serializable {
 		this.id = id;
 	}
 
-	public String getClase() {
-		return clase;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setClase(String clase) {
-		this.clase = clase;
+	public void setClase(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getNombre() {
@@ -92,11 +108,32 @@ public class Producto implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
 	}
 
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
+	public int getId_proveedores() {
+		return id_proveedores;
+	}
+
+	public void setId_proveedores(int id_proveedores) {
+		this.id_proveedores = id_proveedores;
+	}
+
+	public int getId_tipo_producto() {
+		return id_tipo_producto;
+	}
+
+	public void setId_tipo_producto(int id_tipo_producto) {
+		this.id_tipo_producto = id_tipo_producto;
+	}
+
+	public int getInventario() {
+		return inventario;
+	}
+
+	public void setInventario(int inventario) {
+		this.inventario = inventario;
 	}
 }

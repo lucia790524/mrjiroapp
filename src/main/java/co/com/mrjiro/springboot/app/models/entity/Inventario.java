@@ -4,35 +4,61 @@
  */
 package co.com.mrjiro.springboot.app.models.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author lopez
- */
-public class Inventario {
-    int id_producto;
-    int cantidad;
-    String producto;
-    Date fecha_ingreso;
+ */  
+@Entity
+@Table(name = "inventario")
+public class Inventario implements Serializable {
+     /**
+      * 
+      */
+	private static final long serialVersionUID= 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotNull
+	private int cantidad;
+	
+	@Column(name = "createAt")
+	@Temporal(TemporalType.DATE)
+	private Date createAt;
+	
+	@Column(name = "updateAt")
+	@Temporal(TemporalType.DATE)
+	private Date updateAt;
     
-    public Inventario(){
-        
-    }
 
-    public Inventario(int id_producto, int cantidad, String producto, Date fecha_ingreso) {
-        this.id_producto = id_producto;
+    public Inventario(int cantidad, Date createAt, Date updateAt) {
+    	
         this.cantidad = cantidad;
-        this.producto = producto;
-        this.fecha_ingreso = fecha_ingreso;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
     }
 
-    public int getId_producto() {
-        return id_producto;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
+    public void setId(Long id) {
+        this.id= id;
     }
 
     public int getCantidad() {
@@ -43,19 +69,10 @@ public class Inventario {
         this.cantidad = cantidad;
     }
 
-    public String getProducto() {
-        return producto;
-    }
+    @PrePersist
+	public void PrePersist() {
+	 createAt = new Date();
+	}
 
-    public void setProducto(String producto) {
-        this.producto = producto;
-    }
-
-    public Date getFecha_ingreso() {
-        return fecha_ingreso;
-    }
-
-    public void setFecha_ingreso(Date fecha_ingreso) {
-        this.fecha_ingreso = fecha_ingreso;
-    }
+    
 }
