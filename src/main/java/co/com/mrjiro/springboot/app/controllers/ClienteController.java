@@ -16,18 +16,19 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import co.com.mrjiro.springboot.app.models.dao.IClienteDao;
 import co.com.mrjiro.springboot.app.models.entity.Cliente;
+import co.com.mrjiro.springboot.app.models.service.IClienteService;
 
 @Controller
 @SessionAttributes ("cliente")
 public class ClienteController {
 	
 	@Autowired
-	private IClienteDao clienteDao;
+	private IClienteService clienteService;
 	
 	@RequestMapping(value="/clientes", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de Clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "formularios/frm_buscar_cliente";
 	}
 	
@@ -47,7 +48,7 @@ public class ClienteController {
 		Cliente cliente = null;
 		
 		if(id>0) {
-			cliente = clienteDao.findOne(id);
+			cliente = clienteService.findOne(id);
 		}
 		else {
 			return "redirect:/clientes";
@@ -63,7 +64,7 @@ public class ClienteController {
 			model.addAttribute("titulo", "Registro Cliente");
 			return "formularios/frm_registro_cliente";
 		}
-		clienteDao.save(cliente);
+		clienteService.save(cliente);
 		status.setComplete();
 		return "redirect:/clientes";
 	}
@@ -71,7 +72,7 @@ public class ClienteController {
 	public String eliminar(@PathVariable(value="id")Long id) {
 		
 		if(id>0) {
-			clienteDao.delete(id);
+			clienteService.delete(id);
 			
 		}
 			
