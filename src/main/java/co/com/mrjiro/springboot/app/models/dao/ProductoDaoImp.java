@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.com.mrjiro.springboot.app.persistence.entity.Producto;
+import co.com.mrjiro.springboot.app.models.dao.entity.Producto;
 
 @Repository
 public class ProductoDaoImp implements IProductoDao {
