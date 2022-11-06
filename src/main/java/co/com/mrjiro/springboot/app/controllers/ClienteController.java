@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import co.com.mrjiro.springboot.app.models.dao.IClienteDao;
-import co.com.mrjiro.springboot.app.models.entity.Cliente;
+import co.com.mrjiro.springboot.app.persistence.entity.Cliente;
 import co.com.mrjiro.springboot.app.models.service.IClienteService;
 
 @Controller
@@ -42,13 +41,13 @@ public class ClienteController {
 		return "formularios/frm_registro_cliente";
 	}
 	
-	@RequestMapping(value="/registro/cliente/{id}")
-	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
+	@RequestMapping(value="/registro/cliente/{idCliente}")
+	public String editar(@PathVariable(value="idCliente") Long idCliente, Map<String, Object> model) {
 		
 		Cliente cliente = null;
 		
-		if(id>0) {
-			cliente = clienteService.findOne(id);
+		if(idCliente>0) {
+			cliente = clienteService.findOne(idCliente);
 		}
 		else {
 			return "redirect:/clientes";
@@ -61,6 +60,7 @@ public class ClienteController {
 	@RequestMapping(value = "/registro/cliente",method = RequestMethod.POST)
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
+			System.out.println(result.getFieldError());
 			model.addAttribute("titulo", "Registro Cliente");
 			return "formularios/frm_registro_cliente";
 		}
@@ -68,11 +68,11 @@ public class ClienteController {
 		status.setComplete();
 		return "redirect:/clientes";
 	}
-	@RequestMapping(value = "eliminar/cliente/{id}")
-	public String eliminar(@PathVariable(value="id")Long id) {
+	@RequestMapping(value = "eliminar/cliente/{idCliente}")
+	public String eliminar(@PathVariable(value="idCliente")Long idCliente) {
 		
-		if(id>0) {
-			clienteService.delete(id);
+		if(idCliente>0) {
+			clienteService.delete(idCliente);
 			
 		}
 			

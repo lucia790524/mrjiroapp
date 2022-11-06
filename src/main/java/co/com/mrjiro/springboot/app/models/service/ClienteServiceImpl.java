@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.com.mrjiro.springboot.app.models.dao.IClienteDao;
-import co.com.mrjiro.springboot.app.models.entity.Cliente;
+import co.com.mrjiro.springboot.app.persistence.entity.Cliente;
 
 @Service
 public class ClienteServiceImpl implements IClienteService{
@@ -31,14 +31,14 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Override
 	@Transactional (readOnly = true )
-	public Cliente findOne(Long id) {
-		return clienteDao.findById(id).orElse(null);
+	public Cliente findOne(Long idCliente) {
+		return clienteDao.findById(idCliente).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Long id) {
-		clienteDao.deleteById(id);;
+	public void delete(Long idCliente) {
+		clienteDao.deleteById(idCliente);;
 		
 	}
 
