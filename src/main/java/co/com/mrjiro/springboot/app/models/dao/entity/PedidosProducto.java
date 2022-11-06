@@ -1,11 +1,7 @@
-package co.com.mrjiro.springboot.app.persistence.entity;
+package co.com.mrjiro.springboot.app.models.dao.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pedidos_con_productos")

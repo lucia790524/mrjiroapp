@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.com.mrjiro.springboot.app.persistence.entity;
+package co.com.mrjiro.springboot.app.models.dao.entity;
 
 import java.io.Serializable;
 import java.util.Date;

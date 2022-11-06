@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.persistence.entity;
+package co.com.mrjiro.springboot.app.models.dao.entity;
 
 /**
  * 
