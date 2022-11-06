@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.models.dao.entity;
+package co.com.mrjiro.springboot.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,9 +14,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "pedidos")
 public class Pedido implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -1,17 +1,18 @@
-package co.com.mrjiro.springboot.app.models.dao;
+package co.com.mrjiro.springboot.app.models.service;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import co.com.mrjiro.springboot.app.models.dao.IProductoDao;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.com.mrjiro.springboot.app.models.dao.entity.Producto;
+import co.com.mrjiro.springboot.app.models.entity.Producto;
 
 @Repository
-public class ProductoDaoImp implements IProductoDao {
+public class ProductoServiceImpl implements IProductoService {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -27,13 +28,12 @@ public class ProductoDaoImp implements IProductoDao {
 	@Override
 	@Transactional
 	public void save(Producto producto) {
-		if(producto.getId() !=null && producto.getId() >0 ) {
+		if(producto.getIdProducto() !=null && producto.getIdProducto() >0 ) {
 			em.merge(producto);
 		}  else{
 			em.persist(producto);
 	}
 }
-
      @Override
      @Transactional (readOnly = true )
      public Producto findOne(Long id) {

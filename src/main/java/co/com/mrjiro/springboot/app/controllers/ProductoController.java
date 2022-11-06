@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import co.com.mrjiro.springboot.app.models.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,21 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import co.com.mrjiro.springboot.app.models.dao.IProductoDao;
-import co.com.mrjiro.springboot.app.models.dao.entity.Producto;
+import co.com.mrjiro.springboot.app.models.entity.Producto;
 
 @Controller
 @SessionAttributes ("producto")
 public class ProductoController {
 	
 	@Autowired
-	private IProductoDao  productoDao;
+	private IProductoService productoService;
 	
 	
 	@RequestMapping(value = "/productos", method = RequestMethod.GET)
 	public String listarProduto(Model model) {
 		model.addAttribute("titulo","Listado de Producto");
-		model.addAttribute("productos",productoDao.findAll());
+		model.addAttribute("productos", productoService.findAll());
 		return "formularios/frm_buscar_producto";
 	}
 	
@@ -44,7 +44,7 @@ public class ProductoController {
 		
 		Producto producto = null;
 		if(id>0) {
-			producto = productoDao.findOne(id);
+			producto = productoService.findOne(id);
 		}
 		else {
 			return "redirect:/productos";
@@ -63,7 +63,7 @@ public class ProductoController {
     		model.addAttribute("titulo", "Registro Producto");
 			return "formularios/frm_registro_producto";	
     	}
-    	productoDao.save(producto);
+    	productoService.save(producto);
         status.setComplete();
  	   return "redirect:/productos";
     }
@@ -72,7 +72,7 @@ public class ProductoController {
     public String eliminar(@PathVariable(value="id") Long id){
     	
     	if(id>0) {
-    		productoDao.delete(id);
+    		productoService.delete(id);
     		
     	}
     		

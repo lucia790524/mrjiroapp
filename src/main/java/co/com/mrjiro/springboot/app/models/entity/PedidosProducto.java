@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.models.dao.entity;
+package co.com.mrjiro.springboot.app.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;

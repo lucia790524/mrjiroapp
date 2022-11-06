@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.models.dao.entity;
+package co.com.mrjiro.springboot.app.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,4 +1,4 @@
-package co.com.mrjiro.springboot.app.models.dao.service;
+package co.com.mrjiro.springboot.app.models.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.com.mrjiro.springboot.app.models.dao.IClienteDao;
-import co.com.mrjiro.springboot.app.models.dao.entity.Cliente;
+import co.com.mrjiro.springboot.app.models.entity.Cliente;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
