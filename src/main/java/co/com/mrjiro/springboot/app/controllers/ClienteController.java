@@ -4,17 +4,17 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import co.com.mrjiro.springboot.app.util.paginator.PageRender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
-import co.com.mrjiro.springboot.app.models.dao.IClienteDao;
 import co.com.mrjiro.springboot.app.models.entity.Cliente;
 import co.com.mrjiro.springboot.app.models.service.IClienteService;
 
@@ -26,14 +26,18 @@ public class ClienteController {
 	private IClienteService clienteService;
 	
 	@RequestMapping(value="/clientes", method = RequestMethod.GET)
-	public String listar(Model model) {
+	public String listar(@RequestParam(name="page", defaultValue = "0") int page, Model model) {
+
+		Pageable pageRequest = PageRequest.of(page,5);
+		Page<Cliente> clientes = clienteService.findAll(pageRequest);
+		PageRender<Cliente> pageRender =  new PageRender<>("/clientes", clientes);
+
 		model.addAttribute("titulo", "Listado de Clientes");
-		model.addAttribute("clientes", clienteService.findAll());
+		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
 		return "formularios/frm_buscar_cliente";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/registro/cliente")
 	public String crear(Map<String, Object> model) {
 		Cliente cliente = new Cliente();
@@ -42,13 +46,13 @@ public class ClienteController {
 		return "formularios/frm_registro_cliente";
 	}
 	
-	@RequestMapping(value="/registro/cliente/{id}")
-	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
+	@RequestMapping(value="/registro/cliente/{idCliente}")
+	public String editar(@PathVariable(value="idCliente") Long idCliente, Map<String, Object> model) {
 		
 		Cliente cliente = null;
 		
-		if(id>0) {
-			cliente = clienteService.findOne(id);
+		if(idCliente>0) {
+			cliente = clienteService.findOne(idCliente);
 		}
 		else {
 			return "redirect:/clientes";
@@ -68,16 +72,12 @@ public class ClienteController {
 		status.setComplete();
 		return "redirect:/clientes";
 	}
-	@RequestMapping(value = "eliminar/cliente/{id}")
-	public String eliminar(@PathVariable(value="id")Long id) {
-		
-		if(id>0) {
-			clienteService.delete(id);
-			
+	@RequestMapping(value = "eliminar/cliente/{idCliente}")
+	public String eliminar(@PathVariable(value="idCliente")Long idCliente) {
+		if(idCliente>0) {
+			clienteService.delete(idCliente);
 		}
-			
 		return "redirect:/clientes";
-		
 	}
 
 }

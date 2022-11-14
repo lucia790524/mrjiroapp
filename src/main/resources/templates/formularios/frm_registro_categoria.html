@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/navbar::head"></head>
+
+<body class="container">
+<header th:replace="layout/navbar::header"></header>
+<main>
+    <section class="row d-flex justify-content-center">
+        <article class="col-md-6 offset-md-3">
+            <form class="input-group" th:action="@{/registro/categoria}" th:object="${categoria}" method="post">
+                <ul class="dropdown">
+                    <figure class="text-center">
+                        <img class="logo" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo"/>
+                    </figure>
+                    <h3 class="text-white" th:text="${titulo}"></h3>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" type="text" id="floatingInputName"
+                               placeholder="Nombres" th:field="*{nombre}"/>
+                        <label for="floatingInputName">Nombre categoria</label>
+                    </li>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" type="text" id="floatingInputDesc"
+                               placeholder="Nombres" th:field="*{descripcion}"/>
+                        <label for="floatingInputDesc">Descripcion</label>
+                    </li>
+                    <li class="mb-3">
+                        <select class="form-select" name="Estado" aria-label="Default select example" th:field="*{estado}">
+                            <option value="Activa">Activa</option>
+                            <option value="Inactiva">Inactiva</option>
+                        </select>
+                    </li>
+                    <li class="mb-3"><input type="submit"
+                               th:value="${btnCategoria}" class="form-control btn btn-primary"/>
+                    </li>
+                </ul>
+            </form>
+        </article>
+    </section>
+</main>
+</body>
+<footer th:replace="layout/navbar::footer"></footer>
+</html>

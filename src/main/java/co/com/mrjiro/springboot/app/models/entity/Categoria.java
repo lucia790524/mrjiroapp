@@ -17,7 +17,7 @@ import javax.validation.constraints.NotEmpty;
 
 
 @Entity
-@Table(name="categoria")
+@Table(name="categorias")
 public class Categoria implements Serializable{
 /**
  * 
@@ -26,7 +26,8 @@ public class Categoria implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "id_categoria")
+	private Long idCategoria;
 	
 	@NotEmpty
 	private String nombre;
@@ -53,12 +54,12 @@ public class Categoria implements Serializable{
 		this.createAt =createAt;
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getIdCategoria() {
+		return idCategoria;
 	}
 	
-	public void setId(Long id) {
-		
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	
 	public String  getNombre() {
