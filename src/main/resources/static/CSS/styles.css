@@ -159,8 +159,12 @@ grid-row-gap: 0px;
 .contenedor-secundario { grid-area: 1 / 4 / 6 / 6; }
 
 .parent {
+overflow:scroll; height:40%;overflow-x:hidden;
 display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 200px 200px 200px;
-  grid-template-rows: 350px 350px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.items-catalog li{
+list-style-type: none;
 }

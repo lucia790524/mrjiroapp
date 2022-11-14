@@ -5,21 +5,14 @@
 package co.com.mrjiro.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 /**
- *
  * @author Martha Lopez
  */
 
@@ -27,126 +20,137 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 
-	/**
-	 * ATRIBUTOS
-	 */
+    /**
+     * ATRIBUTOS
+     */
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente")
+    private Long idCliente;
 
-	@Column(name = "tipo_documento")
-	private String tipoDocumento;
+    @Column(name = "tipo_documento")
+    private String tipoDocumento;
 
-	@NotEmpty
-	private String documento;
+    @NotEmpty
+    private String documento;
 
-	@NotEmpty
-	private String nombre;
+    @NotEmpty
+    private String nombres;
 
-	@NotEmpty
-	private String apellido;
+    @NotEmpty
+    private String apellidos;
 
-	@NotEmpty
-	private String direccion;
+    @NotEmpty
+    private String telefono;
 
-	@NotEmpty
-	private String telefono;
-	
-	@Column(name = "create_At")
-	@Temporal(TemporalType.DATE)
-	private Date createAt;
+    @NotEmpty
+    private String direccion;
 
-	public Cliente() {
-		
-	}
+    @Column(name = "create_At")
+    @Temporal(TemporalType.DATE)
+    private Date createAt;
 
-	public Cliente(String tipoDocumento, String documento, String nombre, String apellido, String direccion,
-			String telefono, Date createAt) {
-		
-		this.tipoDocumento = tipoDocumento;
-		this.documento = documento;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.telefono = telefono;
-		this.createAt = createAt;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		createAt = new Date();
-	}
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 
-	public Long getId() {
-		return id;
-	}
+    public Cliente() {
+        pedidos = new ArrayList<Pedido>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Cliente(Long idCliente, String tipoDocumento, String documento, String nombres, String apellidos, String direccion,
+                   String telefono, Date createAt) {
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
-	}
+        this.idCliente = idCliente;
+        this.tipoDocumento = tipoDocumento;
+        this.documento = documento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.createAt = createAt;
+    }
 
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
-	}
+    @PrePersist
+    public void prePersist() {
+        createAt = new Date();
+    }
 
-	public String getDocumento() {
-		return documento;
-	}
+    public Long getIdCliente() {
+        return idCliente;
+    }
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public String getDocumento() {
+        return documento;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
 
-	public String getDireccion() {
-		return direccion;
-	}
+    public String getNombres() {
+        return nombres;
+    }
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
 
-	public String getTelefono() {
-		return telefono;
-	}
+    public String getApellidos() {
+        return apellidos;
+    }
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 
-	public Date getCreateAt() {
-		return createAt;
-	}
+    public String getTelefono() {
+        return telefono;
+    }
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public String getDireccion() {
+        return direccion;
+    }
 
-	
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public void addPedidos(Pedido pedido) {
+        pedidos.add(pedido);
+    }
 }

@@ -1,73 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/navbar::head"></head>
-<body class="container">
-  <header th:replace="layout/navbar::header"></header>
-  <main class="contenedor-principal">
-    <article class="contenedor-primario">
-      <section  class="parent">
-            <ul th:each="producto:${productos}">
-              <li>               
-                <div class="card text-center" style="width: 12rem">
-                  <div class="card-body">
-                    <img class="card-img" th:src="@{/img/cat_large.png}" alt="Card image cap" />
-                    <h5 class="card-title" th:text="${producto.clase}"></h5>
-                    <p class="card-text" th:text="${producto.nombre} + ' $'  + ${producto.precio}">
-                    </p>
-                  </div>
-                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
-                  <a href="#" class="btn btn-primary">Agregar</a>
+<body class="overflow-hidden container">
+<header th:replace="layout/navbar::header"></header>
+<main class="row d-flex justify-content-center">
+    <article class="col-md-9 ms-md-auto">
+        <section class="overflow-auto parent">
+            <div th:each="producto:${productos}">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+                            <img class="card-img img-fluid" th:src="@{/img/cat_large.png}"
+                                 alt="Card image cap"/>
+                        </div>
+                        <h5 class="card-title" th:text="${producto.nombre}"></h5>
+                        <div class="items-catalog text-center">
+                            <div class="card-text" th:text="${producto.categoria.nombre}"></div>
+                            <div class="card-text" th:text="${'$' + #numbers.formatDecimal(producto.precio, 0, 'POINT', 0, 'COMMA')}"></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-danger" type="button" id="button-addon1">-</button>
+                            <input type="number" class="form-control text-center" placeholder="Cantidad"
+                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">+</button>
+                        </div>
+                    </div>
                 </div>
-              </ul>
-      </section>
+            </div>
+        </section>
     </article>
-    <aside class="contenedor-secundario">
-      <form action="">
-        <ul class="dropdown">
-          <li>
-            <label for="Tipo de documento">
-              <select name="Tipo de documento" class="form-select mb-3 form-select-sm"
-                aria-label=".form-select-sm example">
-                <option selected>Tipo de documento</option>
-                <option value="CC">Cedula</option>
-                <option value="NIT">NIT</option>
-                <option value="CE">Cedula Extranjeria</option>
-              </select>
-            </label>
-          </li>
-          <li>
-            <label for="identificacion">
-              <input class="mb-3" type="text" name="identificacion" placeholder="Identificacion" required />
-            </label>
-          </li>
-          <li class="mb-3">
-            <label for="Nombre">
-              <input type="text" id="" placeholder="Nombre" disabled />
-            </label>
-          </li>
-          <li class="mb-3">
-            <label for="Descripcion">
-              <input type="text" id="descripcion" placeholder="Breve descripcion" />
-            </label>
-          </li>
-          <li class="mb-3">
-            <label for="Descripcion">
-              <input type="text" id="descripcion" placeholder="Precio total" disabled />
-            </label>
-          </li>
-          <li class="mb-3">
-            <label for="Crear">
-              <input type="submit" class="btn btn-primary" value="Crear" />
-            </label>
-            <label for="Cancelar">
-              <input type="submit" class="btn btn-primary" value="Cancelar" />
-            </label>
-          </li>
-        </ul>
-      </form>
+    <aside class="col-md-3">
+        <form class="input-group" th:action="@{/registro/producto}">
+            <ul class="dropdown row">
+                <figure class="text-center">
+                    <img class="logo" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo"/>
+                </figure>
+                <ul>
+                    <li class="form-floating mb-3">
+                        <select name="Tipo documento" id="floatingSelectId" class="form-select form-select">
+                            <option value="CC">Cedula</option>
+                            <option value="NIT">NIT</option>
+                            <option value="CE">Cedula Extranjeria</option>
+                        </select>
+                        <label for="floatingSelectId">Tipo identificaci&oacute;n</label>
+                    </li>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" type="text" id="floatingInputIdCli" name="identificacion"
+                               placeholder="Identificacion"
+                               required/>
+                        <label for="floatingInputIdCli">Identificacion cliente</label>
+                    </li>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" type="text" id="floatingInputNombre" placeholder="Nombre" disabled/>
+                        <label for="floatingInputNombre">Nombre Cliente</label>
+                    </li>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" type="text" id="floatingInputObs" placeholder="Breve descripcion"/>
+                        <label for="floatingInputObs">Observaciones</label>
+                    </li>
+                    <li class="form-floating mb-3">
+                        <input class="form-control" id="floatingInputPrecio" type="number" placeholder="Precio total"
+                               disabled/>
+                        <label for="floatingInputPrecio">Precio Total</label>
+                    </li>
+                    <li class="input-group">
+                        <input class="form-control mb-3 btn btn-primary" type="submit" value="Crear"/>
+                        <input class="form-control mb-3 btn btn-danger" type="submit" value="Cancelar"/>
+                    </li>
+                </ul>
+            </ul>
+        </form>
     </aside>
-  </main>
-  <footer>Gracias por la visita</footer>
+</main>
+<footer>Gracias por la visita</footer>
 </body>
 
 </html>
