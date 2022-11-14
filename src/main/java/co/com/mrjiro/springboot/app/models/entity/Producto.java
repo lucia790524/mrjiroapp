@@ -38,11 +38,11 @@ public class Producto implements Serializable {
     private Date createAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "proveedor_id", insertable = false, updatable = false)
+    @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoria_id", insertable = false, updatable = false)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Producto() {

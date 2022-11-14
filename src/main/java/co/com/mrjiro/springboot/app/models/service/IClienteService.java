@@ -1,7 +1,5 @@
 package co.com.mrjiro.springboot.app.models.service;
-
 import java.util.List;
-
 import co.com.mrjiro.springboot.app.models.entity.Cliente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

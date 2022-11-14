@@ -1,5 +1,4 @@
 package co.com.mrjiro.springboot.app.models.service;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

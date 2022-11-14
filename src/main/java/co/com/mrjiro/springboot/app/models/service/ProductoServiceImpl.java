@@ -2,51 +2,50 @@ package co.com.mrjiro.springboot.app.models.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import co.com.mrjiro.springboot.app.models.dao.IProductoDao;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.com.mrjiro.springboot.app.models.entity.Producto;
 
-@Repository
+@Service
 public class ProductoServiceImpl implements IProductoService {
 
-	@PersistenceContext
-	private EntityManager em;
+    @Autowired
+    private IProductoDao productoDao;
 
-	@SuppressWarnings("unchecked")
-	@Transactional(readOnly = true)
-	@Override
-	public List<Producto> findAll() {
-		// TODO Auto-generated method stub
-		return em.createQuery("from Producto").getResultList();
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public List<Producto> findAll() {
+        return (List<Producto>) productoDao.findAll();
+    }
 
-	@Override
-	@Transactional
-	public void save(Producto producto) {
-		if(producto.getIdProducto() !=null && producto.getIdProducto() >0 ) {
-			em.merge(producto);
-		}  else{
-			em.persist(producto);
-	}
-}
-     @Override
-     @Transactional (readOnly = true )
-     public Producto findOne(Long id) {
-	  return em.find(Producto.class, id);
-}
-     @Override
-     @Transactional
-     public void delete(Long id) {
-    	 em.remove(findOne(id));
-     }
-     
+    @Override
+    @Transactional
+    public void save(Producto producto) {
+		productoDao.save(producto);
+    }
 
-    	
+    @Override
+    @Transactional(readOnly = true)
+    public Producto findOne(Long id) {
+        return productoDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        productoDao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Producto> findAll(Pageable pageable) {
+        return productoDao.findAll(pageable);
+    }
 }
 
 	

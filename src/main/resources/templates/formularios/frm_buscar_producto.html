@@ -2,53 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/navbar::head"></head>
 <body class="container">
-	<header th:replace="layout/navbar::header"></header>
-	<main>
-		<section>
-			<article
-				class="d-flex flex-column justify-content-center align-items-center text-center ">
-				<form action="">
-					<ul class="dropdown">
-						<figure>
-							<img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
-						</figure>
-						<h3 class="text-white">Buscar Producto</h3>
-						<li><label for="Codigo Producto"> <input
-								class="mb-3 text-center" type="text" name="Codigo Producto"
-								placeholder="Codigo Producto" required />
-						</label></li>
-						<li><label for="Buscar"> <input type="submit"
-								value="Buscar" class="btn btn-primary mb-3" required />
-						</label> <label for="cancelar"> <input type="submit"
-								value="cancelar" class="btn btn-primary mb-3" required />
-						</label></li>
-					</ul>
-				</form>
-			</article>
-			<table class="table text-white container-secundary">
-				<thead>
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Clase</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Precio</th>
-						<th scope="col">Modificar</th>
-						<th scope="col">Eliminar</th>
-					</tr>
-				</thead>
-				<tbody class="table-group-divider">
-					<tr th:each="producto:${productos}">
-						<td th:text="${producto.idProducto}"></td>
-						<td th:text="${producto.clase}"></td>
-						<td th:text="${producto.nombre}"></td>
-						<td th:text="${producto.precio}"></td>
-						<td><a class="btn btn-primary btn-xs" th:href="@{/registro/producto/} + ${producto.idProducto}" th:text="'Editar'"></a></td>
-						<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/producto/} + ${producto.idProducto}" th:text="'Eliminar'"></a></td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-	</main>
+<header th:replace="layout/navbar::header"></header>
+<main>
+    <section>
+        <article
+                class="d-flex flex-column justify-content-center align-items-center text-center ">
+            <form action="">
+                <ul class="dropdown">
+                    <figure>
+                        <img class="logo" src="../img/MrJiro.jpeg" alt="logo"/>
+                    </figure>
+                    <h3 class="text-white">Buscar Producto</h3>
+                    <li>
+                        <input class="mb-3 text-center" type="text" name="Codigo Producto"
+                               placeholder="Codigo Producto" required/>
+                    </li>
+                    <li><input type="submit" value="Buscar" class="btn btn-primary mb-3" required/>
+                    </li>
+                </ul>
+            </form>
+        </article>
+        <table class="table text-white container-secundary">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr th:each="producto:${productos}">
+                <td th:text="${producto.idProducto}"></td>
+                <td th:text="${producto.categoria.nombre}"></td>
+                <td th:text="${producto.proveedor.nombres} + ' ' + ${producto.proveedor.apellidos}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.descripcion}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td><a class="btn btn-primary btn-xs" th:href="@{/registro/producto/} + ${producto.idProducto}"
+                       th:text="'Editar'"></a></td>
+                <td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/producto/} + ${producto.idProducto}"
+                       th:text="'Eliminar'"></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <nav th:replace="layout/paginator-nav::paginator"></nav>
+    </section>
+</main>
 </body>
 <footer th:replace="layout/navbar::footer"></footer>
 </html>
