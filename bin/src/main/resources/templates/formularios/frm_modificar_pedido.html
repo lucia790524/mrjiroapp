@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="StyleSheet" href="../CSS/styles.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../CSS/bootstrap.css" type="text/css" media="screen" />
+  <title>Modificar Pedido</title>
+</head>
+
+<body class="container">
+  <header>
+    <nav class="navbar fixed-top">
+      <figure class="dropdown">
+        <img class="logo-ppal" src="../img/logo_MrJiro.jpeg" alt="logo" />
+      </figure>
+      <ul class="dropdown">
+        <a class="text-white" href="../Index.html">Inicio</a>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Clientes
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_cliente.html">Registrar Cliente</a>
+          <a href="frm_buscar_cliente.html">Buscar Cliente</a>
+          <a href="frm_modificar_cliente.html">Modificar Cliente</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Productos
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_producto.html">Registrar Producto</a>
+          <a href="frm_buscar_producto.html">Buscar Producto</a>
+          <a href="frm_modificar_producto.html">Modificar Producto</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Pedidos
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_pedido.html">Registrar Pedido</a>
+          <a href="frm_buscar_pedido.html">Buscar Pedido</a>
+          <a href="frm_modificar_pedido.html">Modificar Pedido</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Proveedores
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_provedores.html">Registrar Proveedor</a>
+          <a href="frm_buscar_proveedor.html">Buscar Proveedor</a>
+          <a href="frm_modificar_proveedor.html">Modificar Proveedor</a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <button class="dropbtn">
+          Configuracion
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <li class="dropdown-content">
+          <a href="frm_registro_usuario.html">Registrar usuario</a>
+          <a href="#">Cerrar sesion</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="row justify-content-md-center">
+    <article class="col-md-auto">
+      <section>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>
+                <div class="card text-center" style="width: 12rem">
+                  <div class="card-body">
+                    <img class="card-img" src="../img/cat_large.png" alt="Card image cap" />
+                    <h5 class="card-title">Pizza</h5>
+                    <p class="card-text">
+                      Hamburguresa sencilla con carne angus y todas las salsas.
+                    </p>
+                  </div>
+                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
+                  <a href="#" class="btn btn-primary">Modificar</a>
+                </div>
+              </th>
+              <th>
+                <div class="card text-center" style="width: 12rem">
+                  <div class="card-body">
+                    <img class="card-img" src="../img/cat_large.png" alt="Card image cap" />
+                    <h5 class="card-title">Hamburguesa</h5>
+                    <p class="card-text">
+                      Hamburguresa sencilla con carne angus y todas las salsas.
+                    </p>
+                  </div>
+                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
+                  <a href="#" class="btn btn-primary">Modificar</a>
+                </div>
+              </th>
+              <th>
+                <div class="card text-center" style="width: 12rem">
+                  <div class="card-body">
+                    <img class="card-img" src="../img/cat_large.png" alt="Card image cap" />
+                    <h5 class="card-title">Perro Caliente</h5>
+                    <p class="card-text">
+                      Hamburguresa sencilla con carne angus y todas las salsas.
+                    </p>
+                  </div>
+                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
+                  <a href="#" class="btn btn-primary">Modificar</a>
+                </div>
+              </th>
+              <th>
+                <div class="card text-center" style="width: 12rem">
+                  <div class="card-body">
+                    <img class="card-img" src="../img/cat_large.png" alt="Card image cap" />
+                    <h5 class="card-title">Empanadas</h5>
+                    <p class="card-text">
+                      Hamburguresa sencilla con carne angus y todas las salsas.
+                    </p>
+                  </div>
+                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
+                  <a href="#" class="btn btn-primary">Modificar</a>
+                </div>
+              </th>
+          </tbody>
+        </table>
+      </section>
+    </article>
+    <aside class="col col-lg-2 d-flex flex-column justify-content-center text-center">
+      <form action="">
+        <ul class="dropdown">
+          <li>
+            <label for="Tipo de documento">
+              <select name="Tipo de documento" class="form-select mb-3 form-select-sm"
+                aria-label=".form-select-sm example">
+                <option selected>Tipo de documento</option>
+                <option value="CC">Cedula</option>
+                <option value="NIT">NIT</option>
+                <option value="CE">Cedula Extranjeria</option>
+              </select>
+            </label>
+          </li>
+          <li>
+            <label for="identificacion">
+              <input class="mb-3" type="text" name="identificacion" placeholder="Identificacion" required />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Nombre">
+              <input type="text" id="" placeholder="Nombre" disabled />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Descripcion">
+              <input type="text" id="descripcion" placeholder="Breve descripcion" />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Descripcion">
+              <input type="text" id="descripcion" placeholder="Precio total" disabled />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Modificar">
+              <input type="submit" class="btn btn-primary" value="Modificar" />
+            </label>
+            <label for="Cancelar">
+              <input type="submit" class="btn btn-primary" value="Cancelar" />
+            </label>
+          </li>
+        </ul>
+      </form>
+    </aside>
+  </main>
+  <footer>Gracias por la visita</footer>
+</body>
+
+</html>

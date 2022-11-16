@@ -45,7 +45,7 @@ public class CategoriaController {
 		return "formularios/frm_registro_categoria";
 	}
 	
-	@RequestMapping(value="/registro/cliente/{idCategoria}")
+	@RequestMapping(value="/registro/categoria/{idCategoria}")
 	public String editar(@PathVariable(value="idCategoria") Long idCategoria, Map<String, Object> model) {
 		
 		Categoria categoria = null;
@@ -71,7 +71,7 @@ public class CategoriaController {
 		status.setComplete();
 		return "redirect:/clientes";
 	}
-	@RequestMapping(value = "eliminar/cliente/{idCategoria}")
+	@RequestMapping(value = "eliminar/categoria/{idCategoria}")
 	public String eliminar(@PathVariable(value="idCategoria")Long idCategoria) {
 		if(idCategoria>0) {
 			categoriaService.delete(idCategoria);

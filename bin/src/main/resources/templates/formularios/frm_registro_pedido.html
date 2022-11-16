@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/navbar::head"></head>
+<body class="container">
+  <header th:replace="layout/navbar::header"></header>
+  <main class="contenedor-principal">
+    <article class="contenedor-primario">
+      <section  class="parent">
+            <ul th:each="producto:${productos}">
+              <li>               
+                <div class="card text-center" style="width: 12rem">
+                  <div class="card-body">
+                    <img class="card-img" th:src="@{/img/cat_large.png}" alt="Card image cap" />
+                    <h5 class="card-title" th:text="${producto.clase}"></h5>
+                    <p class="card-text" th:text="${producto.nombre} + ' $'  + ${producto.precio}">
+                    </p>
+                  </div>
+                  <input class="text-center" type="number" name="quatity" min="0" placeholder="Cantidad" />
+                  <a href="#" class="btn btn-primary">Agregar</a>
+                </div>
+              </ul>
+      </section>
+    </article>
+    <aside class="contenedor-secundario">
+      <form action="">
+        <ul class="dropdown">
+          <li>
+            <label for="Tipo de documento">
+              <select name="Tipo de documento" class="form-select mb-3 form-select-sm"
+                aria-label=".form-select-sm example">
+                <option selected>Tipo de documento</option>
+                <option value="CC">Cedula</option>
+                <option value="NIT">NIT</option>
+                <option value="CE">Cedula Extranjeria</option>
+              </select>
+            </label>
+          </li>
+          <li>
+            <label for="identificacion">
+              <input class="mb-3" type="text" name="identificacion" placeholder="Identificacion" required />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Nombre">
+              <input type="text" id="" placeholder="Nombre" disabled />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Descripcion">
+              <input type="text" id="descripcion" placeholder="Breve descripcion" />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Descripcion">
+              <input type="text" id="descripcion" placeholder="Precio total" disabled />
+            </label>
+          </li>
+          <li class="mb-3">
+            <label for="Crear">
+              <input type="submit" class="btn btn-primary" value="Crear" />
+            </label>
+            <label for="Cancelar">
+              <input type="submit" class="btn btn-primary" value="Cancelar" />
+            </label>
+          </li>
+        </ul>
+      </form>
+    </aside>
+  </main>
+  <footer>Gracias por la visita</footer>
+</body>
+
+</html>
