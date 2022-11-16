@@ -16,7 +16,7 @@ public class PedidoController {
 		@Autowired
 		private IProductoDao productoDao;
 		
-		@RequestMapping(value="/pedidos", method = RequestMethod.GET)
+		@RequestMapping(value="/registro/pedido", method = RequestMethod.GET)
 		public String listar(Model model) {
 			model.addAttribute("titulo", "Listado de Pedidos");
 			model.addAttribute("productos", productoDao.findAll());

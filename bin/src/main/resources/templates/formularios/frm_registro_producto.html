@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/navbar::head"></head>
+
+<body class="container">
+	<header th:replace="layout/navbar::header"></header>
+	<main>
+		<section>
+			<article
+				class="d-flex flex-column justify-content-center align-items-center text-center">
+				<form th:action="@{/registro/producto}" th:object="${producto}" method="post">
+					<ul class="dropdown">
+						<figure>
+							<img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
+						</figure>
+						<h3 class="text-white">Registrar producto</h3>
+						<li><label for="Clase producto"> <input
+								class="mb-3" type="text" id="name"
+								placeholder="Clase producto" required minlength="4"
+								maxlength="14"  th:field="*{clase}" />
+						</label></li>
+						<li><label for="Nombre"> <input type="text" id=""
+								placeholder="Nombre producto" class="mb-3"  th:field="*{nombre}"/>
+						</label></li>
+						<li><label for="Precio"> <input class="mb-3"
+								type="text" placeholder="Precio"  th:field="*{precio}" />
+						</label></li>
+						<li><label for="Fecha de vencimiento"> <input
+								type="datetime-local" class="mb-3" id="Fecha de vencimiento"
+								placeholder="Fecha de vencimiento"  />
+						</label></li>
+						<li><label for="crear"> <input type="submit"
+								value="Crear" class="btn btn-primary" />
+						</label> <label for="Cancelar"> <input type="submit"
+								value="Cancelar" class="btn btn-primary" />
+						</label></li>
+					</ul>
+				</form>
+			</article>
+		</section>
+	</main>
+</body>
+<footer th:replace="layout/navbar::footer"></footer>
+</html>

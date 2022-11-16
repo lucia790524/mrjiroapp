@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import ch.qos.logback.core.net.server.Client;
 import co.com.mrjiro.springboot.app.util.paginator.PageRender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,8 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
-import co.com.mrjiro.springboot.app.models.dao.entity.Cliente;
-import co.com.mrjiro.springboot.app.models.dao.service.IClienteService;
+import co.com.mrjiro.springboot.app.models.entity.Cliente;
+import co.com.mrjiro.springboot.app.models.service.IClienteService;
 
 @Controller
 @SessionAttributes ("cliente")

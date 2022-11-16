@@ -2,74 +2,76 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head">
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="StyleSheet" th:href="@{/CSS/styles.css}" type="text/css"
-	media="screen" />
-<link rel="stylesheet" th:href="@{/CSS/bootstrap.css}" type="text/css"
-	media="screen" />
-<title>Mr Jiro</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="StyleSheet" th:href="@{/CSS/styles.css}" type="text/css"
+          media="screen"/>
+    <link rel="stylesheet" th:href="@{/CSS/bootstrap.css}" type="text/css"
+          media="screen"/>
+    <title>Mr Jiro</title>
 </head>
 
 <body class="container">
-	<header  th:fragment="header">
-		<nav class="navbar fixed-top">
-			<figure class="dropdown">
-				<img class="logo-ppal" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo" />
-			</figure>
-			<ul class="dropdown">
-				<a class="text-white" th:href="@{/}">Inicio</a>
-			</ul>
-			<ul class="dropdown">
-				<button class="dropbtn">
-					Clientes <i class="fa fa-caret-down"></i>
-				</button>
-				<li class="dropdown-content"><a
-					th:href="@{/registro/cliente}">Registrar Cliente</a> <a
-					th:href="@{/clientes}">Buscar Cliente</a></li>
-			</ul>
-			<ul class="dropdown">
-				<button class="dropbtn">
-					Productos <i class="fa fa-caret-down"></i>
-				</button>
-				<li class="dropdown-content">
-					<a th:href="@{/registro/producto}">Registrar Producto</a>
-					<a th:href="@{/productos}">Buscar Producto</a>
-				</li>
-			</ul>
-			<ul class="dropdown">
-				<button class="dropbtn">
-					Pedidos <i class="fa fa-caret-down"></i>
-				</button>
-				<li class="dropdown-content"><a href="frm_registro_pedido.html">Registrar
-						Pedido</a> <a href="frm_buscar_pedido.html">Buscar Pedido</a> <a
-					href="frm_modificar_pedido.html">Modificar Pedido</a></li>
-			</ul>
-			<ul class="dropdown">
-				<button class="dropbtn">
-					Proveedores <i class="fa fa-caret-down"></i>
-				</button>
-				<li class="dropdown-content">
-					<a th:href="@{/registro/proveedor}">Registrar Proveedor</a>
-					<a th:href="@{/proveedores}">Buscar Proveedor</a>
-			</ul>
-			<ul class="dropdown">
-				<button class="dropbtn">
-					Configuracion <i class="fa fa-caret-down"></i>
-				</button>
-				<li class="dropdown-content"><a
-					href="frm_registro_usuario.html">Registrar usuario</a> <a href="#">Cerrar
-						sesion</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-	</main>
+<header th:fragment="header">
+    <nav class="navbar fixed-top">
+        <figure class="dropdown">
+            <img class="logo-ppal" th:src="@{/img/logo_MrJiro.jpeg}" alt="logo"/>
+        </figure>
+        <ul class="dropdown">
+            <a class="text-white" th:href="@{/}">Inicio</a>
+        </ul>
+        <ul class="dropdown">
+            <button class="dropbtn">
+                Clientes <i class="fa fa-caret-down"></i>
+            </button>
+            <li class="dropdown-content"><a
+                    th:href="@{/registro/cliente}">Registrar Cliente</a> <a
+                    th:href="@{/clientes}">Buscar Cliente</a></li>
+        </ul>
+        <ul class="dropdown">
+            <button class="dropbtn">
+                Productos <i class="fa fa-caret-down"></i>
+            </button>
+            <li class="dropdown-content">
+                <a th:href="@{/registro/categoria}">Categorias</a>
+                <a th:href="@{/registro/producto}">Registrar Producto</a>
+                <a th:href="@{/productos}">Buscar Producto</a>
+            </li>
+        </ul>
+        <ul class="dropdown">
+            <button class="dropbtn">
+                Pedidos <i class="fa fa-caret-down"></i>
+            </button>
+            <li class="dropdown-content">
+                <a th:href="@{/registro/pedido}">Registrar Pedido</a>
+                <a th:href="@{/pedidos}">Buscar Pedido</a>
+            </li>
+        </ul>
+        <ul class="dropdown">
+            <button class="dropbtn">
+                Proveedores <i class="fa fa-caret-down"></i>
+            </button>
+            <li class="dropdown-content">
+                <a th:href="@{/registro/proveedor}">Registrar Proveedor</a>
+                <a th:href="@{/proveedores}">Buscar Proveedor</a>
+        </ul>
+        <ul class="dropdown">
+            <button class="dropbtn">
+                Configuracion <i class="fa fa-caret-down"></i>
+            </button>
+            <li class="dropdown-content"><a
+                    href="frm_registro_usuario.html">Registrar usuario</a> <a href="#">Cerrar
+                sesion</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+</main>
 </body>
 <footer th:fragment>
-<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{js/jquery-3.6.1.min.js}"></script>
-<p>Gracias por la visita</p>
+    <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery-3.6.1.min.js}"></script>
+    <p>Gracias por la visita</p>
 </footer>
 </html>

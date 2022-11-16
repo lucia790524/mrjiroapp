@@ -1,17 +1,7 @@
 package co.com.mrjiro.springboot.app.models.dao;
 
-import java.util.List;
+import co.com.mrjiro.springboot.app.models.entity.Producto;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import co.com.mrjiro.springboot.app.models.dao.entity.Producto;
-
-public interface IProductoDao {
-	
-	public List<Producto> findAll();
-	
-	public void save(Producto producto);
-
-	public Producto findOne(Long id);
-	
-	public void delete(Long id);
-	
+public interface IProductoDao extends PagingAndSortingRepository<Producto,Long> {
 }
