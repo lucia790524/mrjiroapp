@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -45,7 +44,7 @@
             </button>
             <li class="dropdown-content">
                 <a th:href="@{/registro/pedido}">Registrar Pedido</a>
-                <a th:href="@{/pedidos}">Buscar Pedido</a>
+                <a th:href="@{/}">Buscar Pedido</a>
             </li>
         </ul>
         <ul class="dropdown">
@@ -60,11 +59,19 @@
             <button class="dropbtn">
                 Configuracion <i class="fa fa-caret-down"></i>
             </button>
-            <li class="dropdown-content"><a
-                    href="frm_registro_usuario.html">Registrar usuario</a> <a href="#">Cerrar
-                sesion</a></li>
+            <li class="dropdown-content">
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesi&oacute;n</a>
+                <form sec:authorize="isAuthenticated()" id="logoutForm" th:action="@{/logout}" method="post">
+                    <a onclick="document.getElementById('logoutForm').submit();" type="submit">Cerrar sesi&oacute;n</a>
+                </form>
+
+            </li>
         </ul>
     </nav>
+    <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+    <div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+    <div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
 </header>
 <main>
 </main>
@@ -72,6 +79,7 @@
 <footer th:fragment>
     <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{js/jquery-3.6.1.min.js}"></script>
-    <p>Gracias por la visita</p>
+    <p sec:authorize="isAuthenticated()">Usuario logueado: <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities"></span></p>
+    <p>Autor: Martha Lucia Quintero Lopez</p>
 </footer>
 </html>

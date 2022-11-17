@@ -1,65 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-    rel="StyleSheet"
-    href="../CSS/styles.css"
-    type="text/css"
-    media="screen"
-  />
-    <title>Iniciar_Sesion</title>
-    <link
-      rel="StyleSheet"
-      href="../CSS/bootstrap.css"
-      type="text/css"
-      media="screen"
-    />
-  </head>
-  <body class="container">
-    <header></header>
-    <main>
-      <section>
-        <article  class="d-flex flex-column min-vh-100 justify-content-center align-items-center text-center">
-          <form action="">
-            <ul class="dropdown">
-              <figure>
-                <img class="logo" src="../img/MrJiro.jpeg" alt="logo" />
-              </figure>
-              <li class="mb-3">
-                <label for="correo">
-                  <input class="text-center"
-                    type="email"
-                    id="text"
-                    placeholder="correo@ejemplo.com"
-                    required
-                  />
-                </label>
-              </li>
-              <li class="mb-3">
-                <label for="contraseña">
-                  <input class="text-center"
-                    type="password"
-                    id="contraseña"
-                    placeholder="Ingresar contraseña"
-                  />
-                </label>
-              </li>
-              <li>
-                <label for="Inicio">
-                  <input class="btn btn-primary" type="submit" value="Iniciar" />
-                </label>
-                <label for="Inicio"> 
-                  <a class="btn btn-primary"  href="frm_registro_usuario.html">Registrar</a>
-                </label>
-              </li>
-            </ul>
-          </form>
-        </article>
-      </section>
-    </main>
-  </body>
-  <footer>Gracias por la visita</footer>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/navbar::head"></head>
+<body class="container">
+<header>
+    <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+    <div class="alert alert-danger" th:if="${error!= null}" th:text="${error}"></div>
+    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+    <div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+</header>
+<main class="d-flex column justify-content-center text-center">
+    <div class="card border-primary text-center">
+        <div class="card-header">Inicie sesi&oacute;n</div>
+        <div class="card-body">
+            <form class="input-group" th:action="@{/login}" method="post">
+                <div class="column">
+                    <figure>
+                        <img class="logo" th:src="@{/img/MrJiro.jpeg}" alt="logo"/>
+                    </figure>
+                    <div class="form-group mb3">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Nombre Usuario"
+                               autofocus required/>
+                    </div>
+                    <div class="form-group mb3">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña"
+                               required/>
+                    </div>
+                    <div class="form-group mb3">
+                        <input type="submit" class="btn btn-lg btn-block" value="Iniciar"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+<footer th:replace="layout/navbar::footer"></footer>
 </html>
