@@ -11,6 +11,11 @@
   width: 150px;
 }
 
+.logo-footer {
+  border-radius: 50%;
+  width: 50px;
+}
+
 /* Clases para el fondo de pagina.*/
 .container {
   background-image: url(../img/fondo_001.jpg);
@@ -54,7 +59,7 @@ body {
 }
 
 footer {
-  height: 50px;
+  height: 100px;
   line-height: 50px;
   background: black;
   color: white;

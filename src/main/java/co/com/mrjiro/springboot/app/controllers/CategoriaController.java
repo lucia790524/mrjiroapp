@@ -69,7 +69,7 @@ public class CategoriaController {
 		}
 		categoriaService.save(categoria);
 		status.setComplete();
-		return "redirect:/clientes";
+		return "redirect:/registro/producto";
 	}
 	@RequestMapping(value = "eliminar/categoria/{idCategoria}")
 	public String eliminar(@PathVariable(value="idCategoria")Long idCategoria) {
